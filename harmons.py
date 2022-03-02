@@ -19,13 +19,12 @@ def main():
 @click.option('--discount-percentage-highlight', default=0, help='Show all deals with a discount, but highlight deals with a discount greater than this percentage')
 # TODO: Add a flag to show deals with a discount greater than this percentage
 # @click.option('--discount-percentage', default=0, help='Only show deals with a discount greater than this percentage')
-
 def search(search_term, discount_only, vegan, discount_percentage_highlight):
     """Get deals on a search term"""
 
     locale.setlocale( locale.LC_ALL, '' )
 
-    url = f'https://shop.harmonsgrocery.com/api/v2/store_products?limit=1000&search_provider=buffet&search_term={search_term}&secondary_results=false&sort=popular'
+    url = f'https://shop.harmonsgrocery.com/api/v2/store_products?limit=1000&search_provider=buffet&search_term={search_term}'
 
     if discount_only:
         url = f'{url}&tags=on_sale'
@@ -59,6 +58,7 @@ def search(search_term, discount_only, vegan, discount_percentage_highlight):
     click.secho(f"\n{resp.json()['item_count']} deals for search term {search_term}", fg="cyan")
 
 def callApi(url):
+    # This is an anonymous token that was generated from the Harmons API. I guess use it until you can't anymore?! ¯\_(ツ)_/¯
     token = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2Vyc2Vzc2lvbl9pZCI6MTg3MjIxNzYsInVzZXJfaWQiOjIyNjM3NTcsImFkbWludXNlcl9pZCI6bnVsbCwiYW5vbnltb3VzIjp0cnVlLCJpYXQiOjE2MDY3NDc0NjF9.nDhi_bDVIVNY_ac9nh3FpVQc1Jxl7D-J_iKSsPalocc"
     bearerToken = f'Bearer {token}'
     headers = {
