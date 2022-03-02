@@ -4,6 +4,8 @@
 3. Run `poetry install` to install required dependencies
 4. Use the command line tool by seeing the examples below.
 
+Note: If you don't have poetry, see [here](https://python-poetry.org/docs/#osx--linux--bashonwindows-install-instructions).
+
 ## Usage
 ```
 python harmons.py search "ice cream"
