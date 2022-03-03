@@ -24,7 +24,7 @@ def search(search_term, discount_only, vegan, discount_percentage_highlight):
 
     locale.setlocale( locale.LC_ALL, '' )
 
-    url = f'https://shop.harmonsgrocery.com/api/v2/store_products?limit=1000&search_provider=buffet&search_term={search_term}'
+    url = f'https://shop.harmonsgrocery.com/api/v2/store_products?limit=1000&search_provider=buffet&search_term={search_term}&secondary_results=false&sort=popular'
 
     if discount_only:
         url = f'{url}&tags=on_sale'
